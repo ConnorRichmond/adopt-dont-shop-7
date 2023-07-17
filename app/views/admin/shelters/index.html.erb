@@ -1,0 +1,12 @@
+<h1>Admin Shelters</h1>
+
+<%= form_with url: "/admin/shelters", method: :get, local: true do |f| %>
+  <%= f.label :search %>
+  <%= f.text_field :search %>
+  <%= f.submit "Search" %>
+<% end %>
+
+<h1>Admin Shelters Index</h1>
+  <% @shelters.each do |shelter| %>
+    <h3><%= shelter.name %></h3>
+  <% end %>
