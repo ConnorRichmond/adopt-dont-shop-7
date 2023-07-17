@@ -36,11 +36,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_161744) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "adoption_apps_pets", id: false, force: :cascade do |t|
-    t.bigint "adoption_app_id", null: false
-    t.bigint "pet_id", null: false
-  end
-
   create_table "pets", force: :cascade do |t|
     t.boolean "adoptable"
     t.integer "age"
