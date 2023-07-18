@@ -43,6 +43,7 @@ RSpec.describe "The Adoption Application", type: :feature do
       click_button "Adopt this Pet"
 
       expect(page).to have_content("Pet Names: Limb")
+      expect(@adoption_app_2.pets).to eq([@pet_3])
     end
 
     #user story 6

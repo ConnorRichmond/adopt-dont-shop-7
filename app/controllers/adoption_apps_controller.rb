@@ -41,6 +41,7 @@ class AdoptionAppsController < ApplicationController
     added_pet = Pet.find(params[:pet_id])
     if updated_app.pet_names == nil
       updated_app.update(pet_names: added_pet.name)
+      updated_app.pets << added_pet
       updated_app.save
     end
 

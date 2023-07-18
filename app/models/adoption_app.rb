@@ -3,4 +3,8 @@ class AdoptionApp < ApplicationRecord
 
   has_many :adoption_app_pets
   has_many :pets, through: :adoption_app_pets
+
+  def shelter_finder
+    Shelter.find(self.pets.first.shelter_id).name
+  end
 end
