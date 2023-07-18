@@ -15,8 +15,8 @@ RSpec.describe "visiting the admin shelter index", type: :feature do
 
   #user story 11
   it "will display a list on Shelters with pending applications" do
-    
     visit "/adoption_apps/#{@adoption_app_2.id}"
+    
     fill_in "Search", with: "Limb"
     click_button "Submit"
     click_button "Adopt this Pet"

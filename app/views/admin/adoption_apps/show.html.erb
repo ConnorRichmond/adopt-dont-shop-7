@@ -1,0 +1,13 @@
+<h1>Adoption Application</h1>
+<h3>Applicant Name: <%= @adoption_app.name %></h3>
+<h3>Description: <%= @adoption_app.description %></h3>
+<%= if @adoption_app.status == "Pending" %>
+  <h3>Pet Names: <%= @adoption_app.pet_names %></h3><%= button_to 'Approve', {:action => "update", :id => pet.id, :id => @adoption_app.id}, method: "put", class:"button"%>
+<%= else %>
+  <h3>Pet Names: <%= @adoption_app.pet_names %>Approved!</h3>
+<%end%>
+
+
+
+
+

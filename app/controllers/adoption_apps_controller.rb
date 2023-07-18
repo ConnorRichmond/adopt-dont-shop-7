@@ -61,7 +61,7 @@ class AdoptionAppsController < ApplicationController
 
   private
   def adoption_app_params
-    params.permit(:name, :street_address, :city, :state, :zip_code, :description)
+    params.permit(:name, :street_address, :city, :state, :zip_code, :description, :status)
   end
 end
 
