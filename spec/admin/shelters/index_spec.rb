@@ -15,15 +15,23 @@ RSpec.describe "visiting the admin shelter index", type: :feature do
 
   #user story 11
   it "will display a list on Shelters with pending applications" do
+    
+    visit "/adoption_apps/#{@adoption_app_2.id}"
+    fill_in "Search", with: "Limb"
+    click_button "Submit"
+    click_button "Adopt this Pet"
+    
+    fill_in :good_owner_expl, with: "I got some therapy and now I understand the true godliness of animals"
+    click_button "Submit Application"
+    
+    @adoption_app_2.reload
+
     visit "/admin/shelters"
 
     within(".Pending_apps") do
       expect(page).to have_content("Shelters with Pending Applications")
-      expect(@adoption_app_1.status).to eq("Pending")
-      # adoption_app.pets.shelters.name
-      # adoption_app << pet_1
-      # @adoption_app_1.pets << @pet_1
-      # shelter_name = Shelter.find(adoption_app_1.pets.first.shelter_id).name
+      expect(@adoption_app_2.status).to eq("Pending")
+      expect(page).to have_content("Fancy pets of Colorado")
     end
 
   end

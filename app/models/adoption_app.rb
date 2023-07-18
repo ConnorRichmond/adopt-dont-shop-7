@@ -12,6 +12,8 @@ class AdoptionApp < ApplicationRecord
   end
 
   def shelter_finder
-    Pet.where(shelter_id: id).joins(:shelter).pluck("shelters.name")
+    # require 'pry'; binding.pry
+    Shelter.find(self.pets.first.shelter_id).name
+    # Pet.where(shelter_id: id).joins(:shelter).pluck("shelters.name")
   end
 end
