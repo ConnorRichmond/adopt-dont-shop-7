@@ -10,4 +10,8 @@ class AdoptionApp < ApplicationRecord
     #if the application is submitted AND approved, it changes status to "Approved"
     #If the application is submitted AND rejected, it changes status to "Rejected"
   end
+
+  def shelter_finder
+    Pet.where(shelter_id: id).joins(:shelter).pluck("shelters.name")
+  end
 end

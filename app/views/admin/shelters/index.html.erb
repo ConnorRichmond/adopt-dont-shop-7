@@ -10,3 +10,14 @@
   <% @shelters.each do |shelter| %>
     <h3><%= shelter.name %></h3>
   <% end %>
+
+
+<div class="Pending_apps">
+  <h1>Shelters with Pending Applications</h1>
+    <% @adoption_apps.each do |app| %>
+        <% app.shelter_finder.each do |shelter_name| %>
+          <h3><%= shelter_name %></h3>
+      <% end %>
+    <% end %>
+</div>
+
