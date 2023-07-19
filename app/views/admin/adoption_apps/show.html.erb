@@ -1,15 +1,18 @@
 <h1>Adoption Application</h1>
 <h3>Applicant Name: <%= @adoption_app.name %></h3>
 <h3>Description: <%= @adoption_app.description %></h3>
+<h3> Application Status: <%= @adoption_app.status %></h3>
 
-<% if @adoption_app.status == "Pending" %>
-  <h3>Pet Names: <%= @adoption_app.pet_names %><br/></h3>
-  <%= button_to 'Approve', { action: "approve", status: "Approved", id: @adoption_app.id }, method: "put", class: "button" %><br/>
-  <%= button_to 'Reject', { action: "reject", status: "Rejected", id: @adoption_app.id }, method: "put", class: "button" %>
-<% elsif @adoption_app.status == "Approved" %>
-  <h3>Pet Names: <br/><%= @adoption_app.pet_names %> -- Approved!</h3>
-<% else %>
-  <h3>Pet Names: <br/><%= @adoption_app.pet_names %> -- REJECTED!</h3>
+<% @adoption_app.adoption_app_pets.each do |adoption_app_pet| %>
+  <h3>Pet Name: <%= adoption_app_pet.pet.name %></h3>
+  <% if adoption_app_pet.pending? %>
+    <%= button_to 'Approve', { controller: "admin/adoption_apps", action: "approve_pet", id: adoption_app_pet.id }, method: :put, class: "button" %>
+    <%= button_to 'Reject', { controller: "admin/adoption_apps", action: "reject_pet", id: adoption_app_pet.id }, method: :put, class: "button" %>
+  <% elsif adoption_app_pet.approved? %>
+    <p>Pet Status: Approved!</p>
+  <% elsif adoption_app_pet.rejected? %>
+    <p>Pet Status: Rejected!</p>
+  <% end %>
 <% end %>
 
 

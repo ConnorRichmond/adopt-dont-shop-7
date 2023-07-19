@@ -45,6 +45,6 @@ Rails.application.routes.draw do
 
   get "/admin/shelters", to: "admin/shelters#index"
   get "/admin/applications/:id", to: "admin/adoption_apps#show"
-  put "/admin/applications/:id/approve", to: "admin/adoption_apps#approve"
-  put "/admin/applications/:id/reject", to: "admin/adoption_apps#reject"
+  put "/admin/applications/:id/approve_pet", to: "admin/adoption_apps#approve_pet"
+  put "/admin/applications/:id/reject_pet", to: "admin/adoption_apps#reject_pet"
 end
