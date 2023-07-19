@@ -7,6 +7,8 @@ class Admin::AdoptionAppsController < ApplicationController
     admin_app = AdoptionApp.find(params[:id])
     admin_app.update(admin_app_params.merge(status: "Approved"))
     admin_app.save
+
+    redirect_to "/admin/applications/#{admin_app.id}"
     end
 
     private
