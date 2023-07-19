@@ -16,6 +16,8 @@ RSpec.describe "The Adoption Application", type: :feature do
       expect(page).to have_content(@adoption_app_1.state)
       expect(page).to have_content(@adoption_app_1.zip_code)
       expect(page).to have_content(@adoption_app_1.description)
+      expect(@adoption_app_1.pet_names).to be nil
+      expect(@adoption_app_1.status).to be nil
     end
 
     it "Searches for pets" do
