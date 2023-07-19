@@ -1,11 +1,16 @@
 <h1>Adoption Application</h1>
 <h3>Applicant Name: <%= @adoption_app.name %></h3>
 <h3>Description: <%= @adoption_app.description %></h3>
+
 <% if @adoption_app.status == "Pending" %>
-  <h3>Pet Names: <%= @adoption_app.pet_names %><br/></h3><%= button_to 'Approve', {:action => "approve", :status => @adoption_app.status, :id => @adoption_app.id}, method: "put", class:"button"%>
+  <h3>Pet Names: <%= @adoption_app.pet_names %><br/></h3>
+  <%= button_to 'Approve', { action: "approve", status: "Approved", id: @adoption_app.id }, method: "put", class: "button" %><br/>
+  <%= button_to 'Reject', { action: "reject", status: "Rejected", id: @adoption_app.id }, method: "put", class: "button" %>
+<% elsif @adoption_app.status == "Approved" %>
+  <h3>Pet Names: <br/><%= @adoption_app.pet_names %> -- Approved!</h3>
 <% else %>
-  <h3>Pet Names: <br/><%= @adoption_app.pet_names %>   -- Approved!</h3>
-<%end%>
+  <h3>Pet Names: <br/><%= @adoption_app.pet_names %> -- REJECTED!</h3>
+<% end %>
 
 
 
